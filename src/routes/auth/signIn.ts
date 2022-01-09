@@ -6,9 +6,10 @@ import { ISignInRequestDTO } from '../../types/auth';
 import { RequestUserDTO } from '../../types/shared/RequestUserDTO';
 import { BaseRequest } from '../../types/shared/shared';
 import AppRouter from '../AppRouter';
+import { AuthUrls } from './AuthUrls';
 
 AppRouter.instance.post(
-	'/signin',
+	AuthUrls.signIn,
 	async (req: BaseRequest<ISignInRequestDTO>, res: Response) => {
 		if (req.user) {
 			throw new BaseException(

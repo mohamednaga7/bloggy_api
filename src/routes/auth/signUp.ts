@@ -1,3 +1,4 @@
+import { AuthUrls } from './AuthUrls';
 import { Response } from 'express';
 import { sign } from 'jsonwebtoken';
 import { BaseException } from '../../Exceptions/BaseException';
@@ -8,7 +9,7 @@ import { BaseRequest } from '../../types/shared/shared';
 import AppRouter from '../AppRouter';
 
 AppRouter.instance.post(
-	'/signup',
+	AuthUrls.signUp,
 	async (req: BaseRequest<ISignUpRequestDTO>, res: Response) => {
 		if (req.user) {
 			throw new BaseException(
