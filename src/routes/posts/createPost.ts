@@ -1,3 +1,4 @@
+import { ICreatePostRequestDTO } from './../../types/posts';
 import { getAuthUserData } from './../../utils/getAuthUserData';
 import { BaseException } from './../../Exceptions/BaseException';
 import { authRequired } from './../../middlewares/authRequired';
@@ -12,7 +13,7 @@ AppRouter.instance.post(
 	PostsUrls.createPost,
 	isAuthenticated,
 	authRequired,
-	async (req: BaseRequest<any>, res: Response) => {
+	async (req: BaseRequest<ICreatePostRequestDTO>, res: Response) => {
 		try {
 			const user = await getAuthUserData(req.user!._id);
 			const post = new Post(req.body);
