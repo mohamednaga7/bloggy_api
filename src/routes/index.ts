@@ -1,2 +1,2 @@
-import './auth/signUp';
-import './auth/signIn';
+import './auth/index';
+import './posts/index';

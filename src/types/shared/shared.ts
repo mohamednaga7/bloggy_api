@@ -1,7 +1,7 @@
 import { Request } from 'express';
 
 export interface IRequestUser {
-	id: string;
+	_id: string;
 	username: string;
 	email: string;
 }

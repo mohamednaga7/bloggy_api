@@ -1,9 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { IRequestUser } from './../types/shared/shared';
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { BaseRequest, IRequestUserData } from '../types/shared/shared';
+import { BaseRequest } from '../types/shared/shared';
 
 export const isAuthenticated = (
-	req: BaseRequest<null>,
+	req: BaseRequest<any>,
 	res: Response,
 	next: NextFunction
 ) => {
@@ -13,8 +14,8 @@ export const isAuthenticated = (
 			const payload = jwt.verify(
 				token,
 				process.env.JWT_SECRET!
-			) as IRequestUserData;
-			req.user = payload.user;
+			) as IRequestUser;
+			req.user = payload;
 		}
 	}
 	next();
